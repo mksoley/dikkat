@@ -41,6 +41,15 @@ export OPENAI_API_KEY=sk-...
 ## Demo Mode
 Development/testing can be run without camera/mic using the built-in **Demo Mode** toggle on the landing page.
 
+## Offline Static Demo (No npm install)
+If registry access prevents dependency installation, run the lightweight static demo:
+
+```bash
+node tools/serve-static.js --port=4173
+```
+
+This serves `apps/web/static-demo.html` locally with simulated signals and a premium UI snapshot.
+
 ## API Endpoints (Server)
 - `POST /session/start` — validate session metadata + issue session token.
 - `POST /session/events` — ingest derived features and event logs.
