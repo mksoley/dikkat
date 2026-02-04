@@ -7,7 +7,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -b",
-    "lint": "eslint ."
+    "lint": "eslint \"**/*.{js,cjs,mjs}\" --no-error-on-unmatched-pattern"
   },
   "dependencies": {
     "pdf-lib": "^1.17.1",

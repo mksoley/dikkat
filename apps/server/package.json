@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node --watch src/index.ts",
     "build": "tsc -b",
-    "lint": "eslint ."
+    "lint": "eslint \"**/*.{js,cjs,mjs}\" --no-error-on-unmatched-pattern"
   },
   "dependencies": {
     "@dikkat/core": "*",
