@@ -1,6 +1,6 @@
 import express from "express";
 import { SessionMetadataSchema } from "@dikkat/core";
-import { ReportJsonSchema, buildPdfReport } from "@dikkat/report";
+import { ReportJsonSchema, buildPdfReport, buildUserSummaryHtml } from "@dikkat/report";
 
 const app = express();
 app.use(express.json({ limit: "5mb" }));
@@ -33,6 +33,16 @@ app.post("/report/generate", async (req, res) => {
 
   res.setHeader("Content-Type", "application/pdf");
   res.send(Buffer.from(pdfBytes));
+});
+
+app.post("/report/summary", (req, res) => {
+  const parsed = ReportJsonSchema.safeParse(req.body.report);
+  if (!parsed.success) {
+    return res.status(400).json({ error: parsed.error.flatten() });
+  }
+  const html = buildUserSummaryHtml(parsed.data);
+  res.setHeader("Content-Type", "text/html");
+  res.send(html);
 });
 
 const port = process.env.PORT ? Number(process.env.PORT) : 8080;

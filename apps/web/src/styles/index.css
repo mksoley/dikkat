@@ -20,3 +20,8 @@ body {
 .card {
   @apply bg-white/5 border border-white/10 rounded-2xl shadow-panel backdrop-blur;
 }
+
+.plotly .xtick text,
+.plotly .ytick text {
+  fill: #e2e8f0 !important;
+}

@@ -1,4 +1,8 @@
+import { useAppStore } from "../store";
+
 export const Results = () => {
+  const sessionValidity = useAppStore((state) => state.sessionValidity);
+
   return (
     <section className="card p-8 space-y-6">
       <div>
@@ -10,7 +14,7 @@ export const Results = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {[
-          "Validity Score: 86/100",
+          `Validity Score: ${sessionValidity}/100`,
           "Attention Stability Index: 0.78",
           "rPPG SQI Coverage: 72%"
         ].map((item) => (

@@ -11,6 +11,8 @@ import { Break } from "./flows/Break";
 import { Office } from "./flows/Office";
 import { Cooldown } from "./flows/Cooldown";
 import { Results } from "./flows/Results";
+import { useDemoSensors } from "./hooks/useDemoSensors";
+import { LiveCharts } from "./components/LiveCharts";
 
 const flowMap = {
   landing: Landing,
@@ -26,7 +28,10 @@ const flowMap = {
 
 export const App = () => {
   const step = useAppStore((state) => state.step);
+  const demoMode = useAppStore((state) => state.demoMode);
   const StepComponent = flowMap[step];
+
+  useDemoSensors(demoMode);
 
   return (
     <div className="min-h-screen gradient-shell">
@@ -39,6 +44,7 @@ export const App = () => {
           </div>
           <div className="space-y-6">
             <StepCard />
+            <LiveCharts />
             <div className="card p-6 space-y-3">
               <h3 className="text-lg font-semibold">Session Controls</h3>
               <button className="w-full px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10">

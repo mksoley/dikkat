@@ -41,6 +41,12 @@ export OPENAI_API_KEY=sk-...
 ## Demo Mode
 Development/testing can be run without camera/mic using the built-in **Demo Mode** toggle on the landing page.
 
+## API Endpoints (Server)
+- `POST /session/start` — validate session metadata + issue session token.
+- `POST /session/events` — ingest derived features and event logs.
+- `POST /report/generate` — generate clinician PDF report (requires Report JSON payload).
+- `POST /report/summary` — generate a user-friendly HTML summary.
+
 ## Electron Wrapper (Optional)
 The Electron app loads the web build and enables higher timing confidence and optional local filesystem export.
 

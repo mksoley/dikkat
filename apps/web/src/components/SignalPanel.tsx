@@ -1,12 +1,36 @@
-const metrics = [
-  { label: "Face Presence", value: "98%", status: "good" },
-  { label: "Gaze Stability", value: "0.82", status: "good" },
-  { label: "rPPG SQI", value: "0.76", status: "warn" },
-  { label: "Ambient dB", value: "34 dB", status: "good" },
-  { label: "Frame Drops", value: "1.2%", status: "good" }
-];
+import { useAppStore } from "../store";
 
 export const SignalPanel = () => {
+  const signalQuality = useAppStore((state) => state.signalQuality);
+
+  const metrics = [
+    {
+      label: "Face Presence",
+      value: `${Math.round(signalQuality.facePresence * 100)}%`,
+      status: signalQuality.facePresence > 0.9 ? "good" : "warn"
+    },
+    {
+      label: "Gaze Stability",
+      value: signalQuality.gazeStability.toFixed(2),
+      status: signalQuality.gazeStability > 0.75 ? "good" : "warn"
+    },
+    {
+      label: "rPPG SQI",
+      value: signalQuality.rppgSqi.toFixed(2),
+      status: signalQuality.rppgSqi > 0.7 ? "good" : "warn"
+    },
+    {
+      label: "Ambient dB",
+      value: `${signalQuality.ambientDb.toFixed(0)} dB`,
+      status: signalQuality.ambientDb < 45 ? "good" : "warn"
+    },
+    {
+      label: "Frame Drops",
+      value: `${(signalQuality.frameDrops * 100).toFixed(1)}%`,
+      status: signalQuality.frameDrops < 0.02 ? "good" : "warn"
+    }
+  ];
+
   return (
     <div className="card p-6">
       <div className="flex items-center justify-between mb-4">
