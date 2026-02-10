@@ -1,0 +1,10 @@
+{
+  "version": "demo-0.1",
+  "deviceCategory": "desktop",
+  "ageBrackets": {
+    "17-20": { "meanRt": 320, "rtStd": 45, "rtv": 0.18 },
+    "21-30": { "meanRt": 310, "rtStd": 40, "rtv": 0.16 },
+    "31-40": { "meanRt": 330, "rtStd": 50, "rtv": 0.2 }
+  },
+  "note": "Demo-only norms; replace with validated datasets before any real deployment."
+}

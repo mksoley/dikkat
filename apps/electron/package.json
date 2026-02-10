@@ -1,0 +1,13 @@
+{
+  "name": "@dikkat/electron",
+  "private": true,
+  "version": "0.1.0",
+  "main": "main.js",
+  "scripts": {
+    "dev": "electron .",
+    "lint": "eslint \"**/*.{js,cjs,mjs}\" --no-error-on-unmatched-pattern"
+  },
+  "devDependencies": {
+    "electron": "^31.3.1"
+  }
+}

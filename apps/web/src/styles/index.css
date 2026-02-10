@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Inter", system-ui, sans-serif;
+  color: #eef2ff;
+  background: #0b1020;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.gradient-shell {
+  background: radial-gradient(circle at top, rgba(59, 130, 246, 0.22), transparent 60%),
+    linear-gradient(135deg, rgba(17, 24, 39, 0.7), rgba(15, 23, 42, 0.9));
+}
+
+.card {
+  @apply bg-white/5 border border-white/10 rounded-2xl shadow-panel backdrop-blur;
+}
+
+.plotly .xtick text,
+.plotly .ytick text {
+  fill: #e2e8f0 !important;
+}
